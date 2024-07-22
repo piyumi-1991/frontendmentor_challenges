@@ -1,0 +1,63 @@
+name: Deploy subwebsite folders to GitHub pages 
+
+name: Deploy Subdirectories to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy_blog_preview_card:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy blog-preview-card to gh-pages-blog-preview-card branch
+        run: |
+          mkdir public
+          cp -r blog-preview-card/* public/
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Deploy blog-preview-card to gh-pages-blog-preview-card"
+          git push -f https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:gh-pages-blog-preview-card
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy_qr_code_component_main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy qr-code-component-main to gh-pages-qr-code-component-main branch
+        run: |
+          mkdir public
+          cp -r qr-code-component-main/* public/
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Deploy qr-code-component-main to gh-pages-qr-code-component-main"
+          git push -f https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:gh-pages-qr-code-component-main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy_social_links_profile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy social-links-profile to gh-pages-social-links-profile branch
+        run: |
+          mkdir public
+          cp -r social-links-profile/* public/
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Deploy social-links-profile to gh-pages-social-links-profile"
+          git push -f https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:gh-pages-social-links-profile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
