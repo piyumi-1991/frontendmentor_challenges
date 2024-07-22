@@ -1,6 +1,4 @@
-name: Deploy subwebsite folders to GitHub pages 
-
-name: Deploy Subdirectories to GitHub Pages
+name: Deploy subwebsite folders to GitHub pages
 
 on:
   push:
@@ -8,56 +6,55 @@ on:
       - master
 
 jobs:
-  deploy_blog_preview_card:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy blog-preview-card to gh-pages-blog-preview-card branch
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Deploy blog-preview-card
         run: |
-          mkdir public
-          cp -r blog-preview-card/* public/
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          mkdir -p public/blog-preview-card
+          cp -r frontendmentor_challenges/blog-preview-card/* public/blog-preview-card/
+          cd public
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Deploy blog-preview-card to gh-pages-blog-preview-card"
-          git push -f https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:gh-pages-blog-preview-card
+          git commit -m "Deploy blog-preview-card to GitHub Pages"
+          git push --force --quiet "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" master:gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy_qr_code_component_main:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy qr-code-component-main to gh-pages-qr-code-component-main branch
+      - name: Deploy qr-code-component-main
         run: |
-          mkdir public
-          cp -r qr-code-component-main/* public/
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          mkdir -p public/qr-code-component-main
+          cp -r frontendmentor_challenges/qr-code-component-main/* public/qr-code-component-main/
+          cd public
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Deploy qr-code-component-main to gh-pages-qr-code-component-main"
-          git push -f https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:gh-pages-qr-code-component-main
+          git commit -m "Deploy qr-code-component-main to GitHub Pages"
+          git push --force --quiet "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" master:gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy_social_links_profile:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy social-links-profile to gh-pages-social-links-profile branch
+      - name: Deploy social-links-profile
         run: |
-          mkdir public
-          cp -r social-links-profile/* public/
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          mkdir -p public/social-links-profile
+          cp -r frontendmentor_challenges/social-links-profile/* public/social-links-profile/
+          cd public
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Deploy social-links-profile to gh-pages-social-links-profile"
-          git push -f https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:gh-pages-social-links-profile
+          git commit -m "Deploy social-links-profile to GitHub Pages"
+          git push --force --quiet "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" master:gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
