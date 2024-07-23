@@ -7,3 +7,6 @@
 [submodule "testing-repo"]
 	path = testing-repo
 	url = https://github.com/piyumi-1991/testing-repo.git
+[submodule "testing-repoV2"]
+	path = testing-repoV2
+	url = https://github.com/piyumi-1991/testing-repoV2.git
