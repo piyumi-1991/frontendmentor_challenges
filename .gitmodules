@@ -1,3 +1,6 @@
 [submodule "qr-code-component-main"]
 	path = qr-code-component-main
 	url = https://github.com/piyumi-1991/qr-code-component-main.git
+[submodule "blog-preview-card"]
+	path = blog-preview-card
+	url = https://github.com/piyumi-1991/blog-preview-card.git
