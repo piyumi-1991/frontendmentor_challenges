@@ -4,3 +4,6 @@
 [submodule "blog-preview-card"]
 	path = blog-preview-card
 	url = https://github.com/piyumi-1991/blog-preview-card.git
+[submodule "testing-repo"]
+	path = testing-repo
+	url = https://github.com/piyumi-1991/testing-repo.git
